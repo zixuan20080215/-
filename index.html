@@ -1,1 +1,61 @@
-
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#dce8f4">
+  <meta name="description" content="江苏大学智能图书馆参赛原型：AI找书与馆内导引、座位预约、馆内事务反馈。">
+  <title>江苏大学智能图书馆</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/visual-refresh.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳转到主要内容</a>
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="/" aria-label="江苏大学智能图书馆首页">
+      <img src="/assets/m_logo.png" alt="江苏大学图书馆" width="440" height="80">
+      <span class="brand-subtitle">智能服务平台 <span class="prototype-tag">创意原型</span></span>
+    </a>
+    <div class="nav-caption">读者服务</div>
+    <nav id="main-nav" aria-label="主要导航"></nav>
+    <div class="sidebar-assistant">
+      <span class="assistant-orbit" data-icon="sparkles"></span>
+      <strong>从一句话开始</strong>
+      <p>找书、找座，把需求交给AI馆员。</p>
+      <button class="btn btn-primary" data-agent>打开智能助手 <span data-icon="message"></span></button>
+    </div>
+    <div class="sidebar-bottom">
+      <a href="/staff" id="role-link" aria-label="馆员工作台"><span data-icon="dashboard"></span><span>馆员工作台</span><span data-icon="external" class="small-icon"></span></a>
+      <button id="help-button"><span data-icon="help"></span>使用说明</button>
+      <div class="sidebar-footnote"><span class="status-dot"></span>星光杯参赛原型</div>
+    </div>
+  </aside>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-left"><button class="icon-button mobile-menu" id="menu-button" aria-label="展开导航"><span data-icon="menu"></span></button><span class="breadcrumb">读者服务 <span>/</span> <strong id="current-page-label">服务总览</strong></span></div>
+      <div class="topbar-actions"><span class="environment-label"><span class="status-dot"></span>演示环境</span><button class="topbar-ai" data-agent><span data-icon="sparkles"></span>AI馆员 <kbd>Ctrl K</kbd></button><span class="topbar-divider"></span><span class="reader-avatar">江</span><span id="identity-label">演示读者</span></div>
+    </header>
+    <main id="main" tabindex="-1"><div class="loading-state"><span class="loading-ring"></span><p>正在打开你的图书馆…</p></div></main>
+    <footer class="site-footer"><span>江苏大学智能图书馆 <span class="footer-dot">·</span> AI校园治理参赛原型</span><span>预约与反馈记录由本站管理</span></footer>
+  </div>
+  <button class="floating-agent" data-agent aria-label="打开AI馆员"><span data-icon="sparkles"></span><span>问问AI馆员</span><span class="floating-dot"></span></button>
+  <div id="agent-backdrop" class="drawer-backdrop" hidden></div>
+  <aside id="agent-drawer" class="agent-drawer" aria-label="AI馆员对话" aria-modal="true" role="dialog" hidden>
+    <div class="agent-header">
+      <div class="agent-profile" id="agent-profile"></div>
+      <button class="icon-button" id="new-chat-button" aria-label="新建对话" title="新建对话"><span data-icon="new-chat"></span></button>
+      <button class="icon-button" id="close-agent-button" aria-label="关闭AI馆员"><span data-icon="close"></span></button>
+    </div>
+    <div class="agent-character-picker" id="agent-character-picker" role="group" aria-label="切换 AI 馆员"></div>
+    <div class="agent-mode" id="agent-mode-label"><span class="status-dot"></span>规则演示 · 使用样例数据</div>
+    <div class="chat-session-bar" id="chat-session-bar" hidden><span id="chat-turn-status" role="status" aria-live="polite"></span><button type="button" id="restart-chat-button">开始新对话</button></div>
+    <div id="chat-messages" class="chat-messages" role="log" aria-live="polite"></div>
+    <form id="chat-form" class="chat-composer"><label class="sr-only" for="chat-input">向AI馆员提问</label><textarea id="chat-input" placeholder="告诉我你想找什么，或需要什么帮助…" rows="2" maxlength="4000" required></textarea><div class="composer-bottom"><span>Enter发送，Shift + Enter换行</span><button class="chat-send" id="chat-send" type="submit" aria-label="发送消息"><span data-icon="send"></span></button></div></form>
+  </aside>
+  <dialog id="app-dialog" class="app-dialog" aria-labelledby="app-dialog-title" aria-describedby="app-dialog-subtitle"></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <script id="runtime-config" type="application/json">__APP_CONFIG_JSON__</script>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
